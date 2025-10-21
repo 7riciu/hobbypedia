@@ -1,8 +1,9 @@
 import Hello from "../components/MyComponent";
 import Hobbies from "../components/Hobbies";
+import Home from "../pages/Home";
 
 function App() {
-const hobbyNumber = 1;
+const hobbyNumber = 2;
 
   return (
     <div>
@@ -13,7 +14,9 @@ const hobbyNumber = 1;
           <Hello display = "I love art"/>
           <Hobbies hobby = {{title: "coding", time: "always"}}/>
         </>
-      ) : null }
+      ) : (
+        <Home />
+      ) }
       </div>
   );
 }
