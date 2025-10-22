@@ -1,8 +1,10 @@
 'use client';
 
 import Hobbies from "../components/Hobbies"
+import { useState } from "react";
 
 function Home() {
+    const [searchQuery, setSearchQuery] = useState("");
 
     const hobbies = [
         {id: 1, title: "art"},
@@ -11,27 +13,36 @@ function Home() {
         {id: 4, title: "reading"}
     ]
 
-    const handleSearch = () => {
-
-    }
+    const handleSearch = (e) => {
+        e.preventDefault()
+        alert(searchQuery)
+        setSearchQuery("aaaaa")
+    };
 
     return (
         <div className="home">
 
             <form onSubmit={handleSearch} className="search-form">
-                <input type="text" placeholder="Search for movies..." className="search-input" />
+                <input 
+                type="text"
+                placeholder="Search for movies..."
+                className="search-input"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                />
                 <button type="submit" className="search-button">
                     Search
                 </button>    
             </form>
 
-            <div>
-                {hobbies.map((hobby) => (
-                    <Hobbies hobby={hobby} key={hobby.id} />
-                ))}
+            <div className="hobby-grid">
+                {hobbies.map(
+                    (hobby) =>
+                    hobby.title.toLowerCase().startsWith(searchQuery) && (<Hobbies hobby={hobby} key={hobby.id}/>)
+                )}
             </div>
         </div>
     );
 }
 
-export default Home
+export default Home;

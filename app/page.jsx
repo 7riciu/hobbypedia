@@ -1,6 +1,7 @@
 import Hello from "../components/MyComponent";
 import Hobbies from "../components/Hobbies";
 import Home from "../pages/Home";
+import Favorites from "../pages/Favorites";
 
 function App() {
 const hobbyNumber = 2;
